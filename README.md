@@ -574,3 +574,20 @@ This avoids both failure modes:
 - ❌ `npm ci` without lockfile
 - ❌ `npm install` against a blocked registry
 
+
+---
+
+## 16) Merge Conflict Resolution (Quick Guide)
+
+If a merge introduces conflict markers in this repository, use the following sequence to resolve safely:
+
+1. Run `git status` and identify files under **both modified**.
+2. Open each conflicted file and remove conflict markers (`left`, `middle`, and `right` delimiters).
+3. Keep the final combined content that preserves both architecture guidance and environment troubleshooting details.
+4. Validate no markers remain:
+   - `rg -n "^(<{7}|={7}|>{7})" README.md`
+5. Mark resolved and complete merge:
+   - `git add README.md`
+   - `git commit`
+
+Tip: prefer preserving numbered section order and one canonical heading per topic.

@@ -4,12 +4,12 @@
   "description": "Playwright TypeScript test automation framework for Salesforce Products page",
   "private": true,
   "scripts": {
-    "test": "npx playwright test",
-    "test:smoke": "npx playwright test --grep @smoke",
-    "test:regression": "npx playwright test --grep @regression",
-    "test:headed": "npx playwright test --headed",
-    "test:ui": "npx playwright test --ui",
-    "test:report": "npx playwright show-report",
+    "test": "playwright test",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:regression": "playwright test --grep @regression",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report",
     "lint": "eslint . --ext .ts"
   },
   "devDependencies": {

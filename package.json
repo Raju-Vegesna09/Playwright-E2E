@@ -13,7 +13,7 @@
     "lint": "eslint . --ext .ts"
   },
   "devDependencies": {
-    "@playwright/test": "^1.54.2",
+    "playwright": "^1.54.2",
     "@types/node": "^22.15.0",
     "eslint": "^9.25.1",
     "typescript": "^5.8.3",

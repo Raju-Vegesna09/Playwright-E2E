@@ -1,4 +1,4 @@
-import { test as base, expect } from '@playwright/test';
+import { test as base, expect } from 'playwright/test';
 import { ProductsPage } from '../../pages/products.page';
 import { HeaderComponent } from '../../components/header.component';
 

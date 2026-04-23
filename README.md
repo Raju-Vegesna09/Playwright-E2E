@@ -47,7 +47,14 @@ npx playwright install --with-deps
 
 ### CI / restricted environments
 
-The GitHub workflow runs inside the official Playwright container image, so it does not depend on `npm ci`, a lockfile, or runtime package installation.
+- A `package-lock.json` is committed so `npm ci` can run in deterministic environments.
+- `.npmrc` pins the default registry and documents how to switch to an internal mirror when public npm access is blocked.
+- If your network blocks `registry.npmjs.org`, configure your mirror before install:
+
+```bash
+npm config set registry https://<your-internal-registry>/
+npm ci
+```
 
 ## Run Tests
 

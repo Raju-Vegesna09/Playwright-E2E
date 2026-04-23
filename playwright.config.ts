@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from 'playwright/test';
 import { env } from './src/core/config/env';
 
 export default defineConfig({

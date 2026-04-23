@@ -533,3 +533,44 @@ jobs:
 ---
 
 If you want, I can next provide a **production-ready starter repository skeleton** (actual files + minimal runnable tests + CI workflow) matching this blueprint.
+
+---
+
+
+## 15) Codex Environment Install Troubleshooting
+
+When running this blueprint inside restricted Codex containers, dependency installation can fail for two common reasons:
+
+- `npm ci` requires a committed `package-lock.json` and will fail in a clean repo that only has docs.
+- `npm install` can fail with `403 Forbidden` when the environment blocks access to the public npm registry.
+
+### Recommended fixes
+
+1. **Commit a lockfile in the repo where tests live.**
+   - On a machine with npm registry access, run `npm install` once to generate `package-lock.json`.
+   - Commit `package-lock.json`.
+   - In CI/Codex, use `npm ci` (deterministic, faster, and reproducible).
+
+2. **Point npm to an allowed registry mirror (if public npm is blocked).**
+   - Set project-level `.npmrc` (preferred):
+
+   ```ini
+   registry=https://<your-approved-registry>/
+   always-auth=true
+   ```
+
+   - Or set it in CI before install:
+
+   ```bash
+   npm config set registry https://<your-approved-registry>/
+   npm ci
+   ```
+
+3. **For docs-only blueprints like this repository:**
+   - Skip `npm ci`/`npm install` until `package.json` and `package-lock.json` exist.
+   - If you need a runnable starter, scaffold the files first, then generate and commit the lockfile.
+
+This avoids both failure modes:
+- ❌ `npm ci` without lockfile
+- ❌ `npm install` against a blocked registry
+

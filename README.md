@@ -38,10 +38,16 @@ Senior-SDET-style, scalable Playwright + TypeScript framework focused on testing
 
 ## Setup
 
+### Local development
+
 ```bash
-npm ci
+npm install
 npx playwright install --with-deps
 ```
+
+### CI / restricted environments
+
+The GitHub workflow runs inside the official Playwright container image, so it does not depend on `npm ci`, a lockfile, or runtime package installation.
 
 ## Run Tests
 
